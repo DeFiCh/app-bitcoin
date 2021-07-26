@@ -76,6 +76,11 @@ else ifeq ($(COIN),dash)
 DEFINES   += BIP44_COIN_TYPE=5 BIP44_COIN_TYPE_2=5 COIN_P2PKH_VERSION=76 COIN_P2SH_VERSION=16 COIN_FAMILY=1 COIN_COINID=\"DarkCoin\" COIN_COINID_HEADER=\"DASH\" COIN_COLOR_HDR=0x0E76AA COIN_COLOR_DB=0x87BBD5 COIN_COINID_NAME=\"Dash\" COIN_COINID_SHORT=\"DASH\" COIN_KIND=COIN_KIND_DASH
 APPNAME ="Dash"
 APP_LOAD_PARAMS += --path $(APP_PATH)
+else ifeq ($(COIN),defichain)
+# DeFiChain
+DEFINES   += BIP44_COIN_TYPE=1129 BIP44_COIN_TYPE_2=0 COIN_P2PKH_VERSION=18 COIN_P2SH_VERSION=90 COIN_FAMILY=1 COIN_COINID=\"Defi\" COIN_COINID_HEADER=\"DEFI\" COIN_COLOR_HDR=0xFF47C2 COIN_COLOR_DB=0xFF87D7 COIN_COINID_NAME=\"Defi\" COIN_COINID_SHORT=\"DFI\" COIN_NATIVE_SEGWIT_PREFIX=\"df\" COIN_KIND=COIN_KIND_DEFICHAIN COIN_FLAGS=FLAG_SEGWIT_CHANGE_SUPPORT
+APPNAME ="DeFiChain"
+APP_LOAD_PARAMS += --path $(APP_PATH)
 else ifeq ($(COIN),zcash)
 # Zcash
 DEFINES   += BIP44_COIN_TYPE=133 BIP44_COIN_TYPE_2=133 COIN_P2PKH_VERSION=7352 COIN_P2SH_VERSION=7357 COIN_FAMILY=1 COIN_COINID=\"Zcash\" COIN_COINID_HEADER=\"ZCASH\" COIN_COLOR_HDR=0x3790CA COIN_COLOR_DB=0x9BC8E5 COIN_COINID_NAME=\"Zcash\" COIN_COINID_SHORT=\"ZEC\" COIN_KIND=COIN_KIND_ZCASH
@@ -184,7 +189,7 @@ APPNAME ="Ravencoin"
 APP_LOAD_PARAMS += --path $(APP_PATH)
 else
 ifeq ($(filter clean,$(MAKECMDGOALS)),)
-$(error Unsupported COIN - use bitcoin_testnet, bitcoin, bitcoin_cash, bitcoin_gold, litecoin, dogecoin, dash, zcash, horizen, komodo, stratis, peercoin, pivx, viacoin, vertcoin, stealth, digibyte, qtum, bitcoin_private, firo, gamecredits, zclassic, xsn, nix, lbry, resistance, ravencoin)
+$(error Unsupported COIN - use bitcoin_testnet, bitcoin, bitcoin_cash, bitcoin_gold, litecoin, dogecoin, dash, defichain, zcash, horizen, komodo, stratis, peercoin, pivx, viacoin, vertcoin, stealth, digibyte, qtum, bitcoin_private, firo, gamecredits, zclassic, xsn, nix, lbry, resistance, ravencoin)
 endif
 endif
 
@@ -310,11 +315,11 @@ dep/%.d: %.c Makefile
 ifeq ($(TARGET_NAME),TARGET_NANOX)
 
 listvariants:
-	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private firo gamecredits zclassic xsn nix lbry ravencoin
+	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash defichain zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private firo gamecredits zclassic xsn nix lbry ravencoin
 
 else
 
 listvariants:
-	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private firo gamecredits zclassic xsn nix lbry ravencoin resistance
+	@echo VARIANTS COIN bitcoin_testnet bitcoin bitcoin_cash bitcoin_gold litecoin dogecoin dash defichain zcash horizen komodo stratis peercoin pivx viacoin vertcoin stealth digibyte qtum bitcoin_private firo gamecredits zclassic xsn nix lbry ravencoin resistance
 
 endif
